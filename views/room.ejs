@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="main_script.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    #notification-container {
+      width: 80%;
+      max-width: 1200px;
+    }
+    #notification-container div {
+      background-color: #CCC;
+      padding: 5px;
+    }
+    #notification-container div:nth-child(2n) {
+      background-color: #FFF;
+    }
+    #post-container {
+      position: fixed;
+      padding-bottom: 30px;
+      bottom: 0;
+      background-color: white;
+      max-width: 1200px;
+      width: 80%;
+      display: flex;
+    }
+    #notification-input {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="notification-container"></div>
+  <form id="post-container">
+    <input type="text" id="notification-input">
+    <button type="submit" id="post-button">Send</button>
+  </form>
+</body>
+</html>
