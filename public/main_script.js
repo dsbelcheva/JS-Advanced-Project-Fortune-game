@@ -12,8 +12,8 @@ if (postForm != null) {
   postForm.addEventListener('submit', eventt => {
     eventt.preventDefault()
     const message = notificationInput.value
-    appendMessage('You: ${message}')
-    socket.emit('send-notification-message', roomName, message)
+    appendMessage('You:' + message)
+    socket.emit('share-current-horoscope', roomName, message)
     notificationInput.value=''
   } )
 }
@@ -28,7 +28,7 @@ socket.on('room-created', room => {
   roomContainer.append(roomLink)
 })
 
-socket.on('chat-message', data => {
+socket.on('user-horoscope', data => {
   appendMessage(`${data.name}: ${data.message}`)
 })
 
