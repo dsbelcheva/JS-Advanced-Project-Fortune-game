@@ -1,1 +1,1 @@
-# JS-Advanced-Project-Fortune-game
+# JS-Advanced-Project-Horoscope-App
