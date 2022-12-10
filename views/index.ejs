@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Horoscope App</title>
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <script defer src="main_script.js"></script>
+  <script defer type="module" src="main_script.js"></script>
+  <script type="module" src="horosope_chart.js"></script>
 </head>
+
 <body>
+  <canvas id="canvas" width="400" height="400" style="background-color:white">
+  </canvas>
   <div id="room-container">
-    <% Object.keys(rooms).forEach(room => { %>
-      <div><%= room %></div>
+    <% Object.keys(rooms).forEach(room=> { %>
+      <div>
+        <%= room %>
+      </div>
       <a href="/<%= room %>">Join</a>
-    <% }) %>
+      <% }) %>
   </div>
   <form action="/room" method="POST">
     <input name="room" type="text" required>
     <button type="submit">New Room</button>
   </form>
 </body>
+
 </html>

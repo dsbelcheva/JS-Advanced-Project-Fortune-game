@@ -23,7 +23,6 @@ app.post('/room', (req, res) => {
   // Send message that new room was created
   io.emit('room-created', req.body.room)
 })
-
 app.get('/:room', (req, res) => {
   if (rooms[req.params.room] == null) {
     return res.redirect('/')
