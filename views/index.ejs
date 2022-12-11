@@ -7,12 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Horoscope App</title>
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <script defer type="module" src="main_script.js"></script>
+  <script defer type="module" src="socket_script.js"></script>
   <script type="module" src="horosope_chart.js"></script>
 </head>
 
 <body>
-  <canvas id="canvas" width="400" height="400" style="background-color:white">
+  <canvas id="canvas" width="500" height="500" style="background-color:white">
   </canvas>
   <div id="room-container">
     <% Object.keys(rooms).forEach(room=> { %>

@@ -1,21 +1,21 @@
 class Element {
     constructor(zodiac_element){
      if(zodiac_element === "fire"){
-        this.color = "rgba(255,102,102,1.0)";
+        this.color = "rgba(204,0,0,1.0)";
      }
      else if(zodiac_element === "wind"){
-        this.color =  "rgba(255,255,102,1.0)";
+        this.color =  "rgba(255,128,0,1.0)";
      }
      else if(zodiac_element === "earth"){
-        this.color =  "rgba(204,255,204,1.0)";
+        this.color =  "rgba(0,153,76,1.0)";
      }
      else {
         this.color = "rgba(153,204,255,1.0)";
      }
     }
 }
-const zodiacSymbolDict = {
-    "Aries":"♈",
+ const zodiacSymbolDict = {
+    "Aries":"♈", 
     "Taurus":"♉",
     "Gemini": "♊",
     "Cancer": "♋",

@@ -1,5 +1,4 @@
 import { Zodiac } from "./zodiac.js";
-console.log("hey");
 
 const zodiacNumberDict = {
     1: "Aries",
@@ -27,6 +26,7 @@ export function drawChart() {
 
 function draw(ctx, radius) {
     drawFace(ctx, radius);
+    drawElements(ctx,radius);
     drawZodiac(ctx, radius);
 }
 
@@ -39,30 +39,40 @@ function drawFace(ctx, radius) {
     grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
     grad.addColorStop(0, '#333');
     ctx.strokeStyle = grad;
-    ctx.lineWidth = radius * 0.1;
+    ctx.lineWidth = radius * 0.001;
     ctx.stroke();
     ctx.beginPath();
     ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
     ctx.fill();
 }
 
-
 function drawZodiac(ctx, radius) {
-    var ang;
-    var zodiacNum;
     ctx.font = radius * 0.15 + "px arial";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
-    for (zodiacNum = 1; zodiacNum < 13; zodiacNum++) {
-        let zodiac = new Zodiac(zodiacNumberDict[zodiacNum])
-        ang = zodiacNum * Math.PI / 6;
-        ctx.rotate(ang);
-        ctx.translate(0, -radius * 0.85);
-        ctx.rotate(-ang);
-        ctx.fillText(zodiac.symbol, 0, 0);
-        ctx.rotate(ang);
-        ctx.translate(0, radius * 0.85);
-        ctx.rotate(-ang);
+    for (var j = 0; j < 12; j++) {
+        let zodiac = new Zodiac(zodiacNumberDict[j+1])
+        var ax = (radius - 50) * Math.cos(Math.PI * 2 / 12 * j);
+        var ay = (radius - 50) * Math.sin(Math.PI * 2 / 12 * j);
+        ctx.beginPath();
+        ctx.fillText(zodiac.symbol, ax, ay);  
+        ctx.fill();
+    }
+}
+
+function drawElements(ctx, radius){
+    for (var i = 0; i < 60; i++) {
+        var x = (radius - 20) * Math.cos(Math.PI * 2 / 60 * i);
+        var y = (radius - 20) * Math.sin(Math.PI * 2 / 60 * i);
+        if (i % 5 === 0) {
+            let zodiac = new Zodiac(zodiacNumberDict[i/5 + 1])
+            ctx.fillStyle = zodiac.element.color;
+        } else {
+            ctx.fillStyle = "#cccccc";
+        }
+        ctx.beginPath();
+        ctx.arc(x, y, 5, 0, 2 * Math.PI);
+        ctx.fill();
     }
 }
 
