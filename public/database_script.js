@@ -1,17 +1,41 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js'
+import {   getDatabase,
+    ref,
+    push,
+    set,
+    child,
+    get,
+    onValue,
+    update,
+    onChildAdded,
+    onChildChanged,
+    onChildRemoved,
+    remove  } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js'
+// Web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  // ...
-  // The value of `databaseURL` depends on the location of the database
-  databaseURL: "https://console.firebase.google.com/u/0/project/horoscope-e0385/database/horoscope-e0385-default-rtdb/data/~2F",
+    apiKey: "AIzaSyD5_fkFNmtL4jAqvK5xw6dV8BbYaSJiLW8",
+    authDomain: "horoscope-e0385.firebaseapp.com",
+    databaseURL: "https://horoscope-e0385-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "horoscope-e0385",
+    storageBucket: "horoscope-e0385.appspot.com",
+    messagingSenderId: "883895662651",
+    appId: "1:883895662651:web:4184a9634f31d8cd05841e",
+    measurementId: "G-PEJEB6XJ9L"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export function getHoroscopeByPlanetAndZodiac(planet, zodiac) {
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const dbRef = ref(db);
+    get(child(dbRef, 'planets-and-zodiacs/' + planet + '/' + zodiac))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val())
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
-
-// Initialize Realtime Database and get a reference to the service
-const database = getDatabase(app);
+}

@@ -1,3 +1,4 @@
+import { getHoroscopeByPlanetAndZodiac } from "./database_script.js";
 import { Zodiac } from "./zodiac.js";
 
 const zodiacNumberDict = {
@@ -20,8 +21,9 @@ export function drawChart() {
     var ctx = canvas.getContext("2d");
     var radius = canvas.height / 2;
     ctx.translate(radius, radius);
-    radius = radius * 0.90
+    radius = radius * 0.90;
     draw(ctx,radius);
+    getHoroscopeByPlanetAndZodiac("Mars", "Pisces");
 }
 
 function draw(ctx, radius) {
