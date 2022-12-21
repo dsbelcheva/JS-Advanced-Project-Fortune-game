@@ -79,4 +79,6 @@ function drawElements(ctx, radius){
     }
 }
 
+// to add: draw planets to the horoscope
+
 drawChart();

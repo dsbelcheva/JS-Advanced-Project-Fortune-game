@@ -50,3 +50,5 @@ export class Zodiac{
         this.element = new Element(zodiacElementDict[name]);
     }
 }
+
+// to add: function for getting zodiac sign from birthday

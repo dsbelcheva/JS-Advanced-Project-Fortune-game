@@ -24,6 +24,8 @@ const firebaseConfig = {
     measurementId: "G-PEJEB6XJ9L"
 };
 
+const fortuneContainer = document.getElementById("horoscope-fortune-container");
+
 export function getHoroscopeByPlanetAndZodiac(planet, zodiac) {
     const app = initializeApp(firebaseConfig);
     const db = getDatabase();
@@ -31,7 +33,9 @@ export function getHoroscopeByPlanetAndZodiac(planet, zodiac) {
     get(child(dbRef, 'planets-and-zodiacs/' + planet + '/' + zodiac))
     .then((snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val())
+        const el = document.createElement("p");
+        el.innerHTML = planet + " was in " + zodiac + " :"  + snapshot.val();
+        fortuneContainer.appendChild(el);
       }
     })
     .catch((error) => {
@@ -39,3 +43,6 @@ export function getHoroscopeByPlanetAndZodiac(planet, zodiac) {
     });
 
 }
+
+
+//to add: get planets locations from db accordign to birthday and hour
