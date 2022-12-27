@@ -25,11 +25,11 @@ const firebaseConfig = {
 };
 
 const fortuneContainer = document.getElementById("horoscope-fortune-container");
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+const dbRef = ref(db);
 
 export function getHoroscopeByPlanetAndZodiac(planet, zodiac) {
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase();
-    const dbRef = ref(db);
     get(child(dbRef, 'planets-and-zodiacs/' + planet + '/' + zodiac))
     .then((snapshot) => {
       if (snapshot.exists()) {
@@ -41,8 +41,17 @@ export function getHoroscopeByPlanetAndZodiac(planet, zodiac) {
     .catch((error) => {
       console.error(error);
     });
-
 }
 
+export function getPlanetsPositions(day, hour) {
+  get(child(dbRef, 'planet-positions/' + day + '/' + hour))
+  .then((snapshot) => {
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
-//to add: get planets locations from db accordign to birthday and hour
+}
