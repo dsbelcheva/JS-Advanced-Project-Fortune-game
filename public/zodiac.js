@@ -60,7 +60,7 @@ const zodiacNumberDict = {
 
 export class Zodiac{
     constructor(number){
-        this.name = zodiacNumberDict(number);
+        this.name = zodiacNumberDict[number];
         this.symbol = zodiacSymbolDict[this.name];
         this.element = new Element(zodiacElementDict[this.name]);
     }

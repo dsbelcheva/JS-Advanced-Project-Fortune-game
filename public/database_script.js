@@ -47,7 +47,10 @@ export function getPlanetsPositions(day, hour) {
   get(child(dbRef, 'planet-positions/' + day + '/' + hour))
   .then((snapshot) => {
     if (snapshot.exists()) {
-      return snapshot.val();
+      let degreesArr = snapshot.val().split(",");
+      console.log(snapshot.val());
+      console.log(degreesArr);
+      return degreesArr;
     }
   })
   .catch((error) => {

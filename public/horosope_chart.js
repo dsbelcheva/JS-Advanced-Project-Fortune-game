@@ -1,18 +1,6 @@
-import { getHoroscopeByPlanetAndZodiac } from "./database_script.js";
+import { getHoroscopeByPlanetAndZodiac, getPlanetsPositions } from "./database_script.js";
 import { Zodiac } from "./zodiac.js";
-
-const planetSymbols = {
-    "Sun": "☉",
-    "Mercury": "☿",
-    "Venus": "♀",
-    "Mars": "♂",
-    "Moon": "☽",
-    "Jupiter": "♃",
-    "Saturn": "♄",
-    "Uranus": "⛢",
-    "Neptune": "♆",
-    "Pluto": "♇"
-}
+import { Planet } from "./planets.js";
 
 export function drawChart() {
     var canvas = document.getElementById("canvas");
@@ -22,6 +10,8 @@ export function drawChart() {
     radius = radius * 0.90;
     draw(ctx,radius);
     getHoroscopeByPlanetAndZodiac("Mars", "Pisces");
+    let degrees = [202, 251, 158, 225, 266, 305, 271, 287, 35, 215];
+    drawPlanets(ctx,radius, degrees);
 }
 
 function draw(ctx, radius) {
@@ -79,9 +69,18 @@ function drawElements(ctx, radius){
 
 // to add: draw planets to the horoscope
 
-function drawPlanets(){
-
-
+function drawPlanets(ctx,radius,  degrees){
+    ctx.font = radius * 0.10 + "px arial";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    for (var j = 0; j < 10; j++) {
+        let planet = new Planet(j+1)
+        var ax = (radius - 80) * Math.cos(Math.PI * 2/360 * degrees[j]);
+        var ay = (radius - 80) * Math.sin(Math.PI * 2/ 360 * degrees[j]);
+        ctx.beginPath();
+        ctx.fillText(planet.symbol, ax, ay);  
+        ctx.fill();
+    }
 }
 
 drawChart();
