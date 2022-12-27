@@ -1,19 +1,17 @@
 import { getHoroscopeByPlanetAndZodiac } from "./database_script.js";
 import { Zodiac } from "./zodiac.js";
 
-const zodiacNumberDict = {
-    1: "Aries",
-    2:"Taurus",
-    3:"Gemini",
-    4:"Cancer",
-    5:"Leo",
-    6:"Virgo",
-    7:"Libra",
-    8:"Scorpio",
-    9:"Sagittarius",
-    10:"Capricorn",
-    11:"Aquarius",
-    12:"Pisces"
+const planetSymbols = {
+    "Sun": "☉",
+    "Mercury": "☿",
+    "Venus": "♀",
+    "Mars": "♂",
+    "Moon": "☽",
+    "Jupiter": "♃",
+    "Saturn": "♄",
+    "Uranus": "⛢",
+    "Neptune": "♆",
+    "Pluto": "♇"
 }
 
 export function drawChart() {
@@ -54,7 +52,7 @@ function drawZodiac(ctx, radius) {
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     for (var j = 0; j < 12; j++) {
-        let zodiac = new Zodiac(zodiacNumberDict[j+1])
+        let zodiac = new Zodiac(j+1)
         var ax = (radius - 50) * Math.cos(Math.PI * 2 / 12 * j);
         var ay = (radius - 50) * Math.sin(Math.PI * 2 / 12 * j);
         ctx.beginPath();
@@ -68,7 +66,7 @@ function drawElements(ctx, radius){
         var x = (radius - 20) * Math.cos(Math.PI * 2 / 60 * i);
         var y = (radius - 20) * Math.sin(Math.PI * 2 / 60 * i);
         if (i % 5 === 0) {
-            let zodiac = new Zodiac(zodiacNumberDict[i/5 + 1])
+            let zodiac = new Zodiac(i/5 + 1)
             ctx.fillStyle = zodiac.element.color;
         } else {
             ctx.fillStyle = "#cccccc";
@@ -80,5 +78,10 @@ function drawElements(ctx, radius){
 }
 
 // to add: draw planets to the horoscope
+
+function drawPlanets(){
+
+
+}
 
 drawChart();

@@ -43,11 +43,26 @@ const zodiacElementDict= {
     "Pisces": "water"
 };
 
+const zodiacNumberDict = {
+    1: "Aries",
+    2:"Taurus",
+    3:"Gemini",
+    4:"Cancer",
+    5:"Leo",
+    6:"Virgo",
+    7:"Libra",
+    8:"Scorpio",
+    9:"Sagittarius",
+    10:"Capricorn",
+    11:"Aquarius",
+    12:"Pisces"
+}
+
 export class Zodiac{
-    constructor(name){
-        this.name = name;
-        this.symbol = zodiacSymbolDict[name];
-        this.element = new Element(zodiacElementDict[name]);
+    constructor(number){
+        this.name = zodiacNumberDict(number);
+        this.symbol = zodiacSymbolDict[this.name];
+        this.element = new Element(zodiacElementDict[this.name]);
     }
 }
 
