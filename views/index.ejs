@@ -11,7 +11,7 @@
   <script type="module" src="horosope_chart.js"></script>
   <script type="module" src="events.js"></script>
 </head>
-
+ 
 <body>
   <canvas id="canvas" width="500" height="500" style="background-color:white">
   </canvas>
@@ -27,6 +27,13 @@
   <form action="/room" method="POST">
     <input name="room" type="text" required>
     <button type="submit">New Room</button>
+  </form>
+
+  <form action="/events" method="GET">
+    <label for="birthday">Enter your birthday:</label>
+    <input id="birthday" name="birthday" type="date" required>
+    <input id="time" name="time" type="time" required>
+    <button id="submit_btn" type="submit">Submit</button>
   </form>
 </body>
 

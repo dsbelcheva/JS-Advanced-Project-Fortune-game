@@ -67,3 +67,17 @@ export class Zodiac{
 }
 
 // to add: function for getting zodiac sign from birthday
+
+export function findZodiac (birthday) {
+    const zodiacChangeDays = [21, 20, 21, 21, 22, 22, 23, 24, 24, 24, 23, 22];
+    const signs = ["Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn"];
+    let month = birthday.getMonth();
+    let day = birthday.getDate();
+    if (month == 0 && day <= 20){
+       month = 11;
+    }
+    else if (day < zodiacChangeDays[month]){
+       month--;
+    };
+    return signs[month];
+};
