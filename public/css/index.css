@@ -2,6 +2,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   background: linear-gradient(#e6ccff, #9198e5);
   color: #333;
+  height: 100%;
+  min-height: 100vh;
 }
 
 h1 {
@@ -29,7 +31,7 @@ canvas {
   display:flex;
 }
 
-#horoscope-fortune-container {
+.horoscope-container {
   display: flex;
   margin-top:50px;
   flex-direction: column;
@@ -37,7 +39,7 @@ canvas {
   justify-content: center;
   background-color:#f2e5ff;
   max-width: 50rem;
-  height: 780px;
+  height: 60%;
   width: 100%;
  padding:0px;
  border:5px solid white;
@@ -45,7 +47,7 @@ canvas {
   box-shadow: 5px 5px 10px #ccc;
   overflow: hidden;
   overflow-y: scroll;
-  margin-left:400px;
+  margin-left:30%;
 }
 
 #horoscope-fortune-container p {
@@ -102,6 +104,10 @@ canvas {
    padding:1rem;
     border-radius: 8px;
     box-shadow: 5px 5px 10px #ccc;
+}
+
+.hidden{
+  display: none;
 }
 
 .birthday label {

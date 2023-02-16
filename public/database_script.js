@@ -36,7 +36,7 @@ const db = getDatabase();
 const dbRef = ref(db);
 
 
-export async function getHoroschope(date, time, zodiac) {
+export async function getHoroschope(date, time) {
   let formattedDate = date.replaceAll("-", "");
   get(child(dbRef, "planet-positions/" + formattedDate + "/" + time))
     .then((snapshot) => {
@@ -53,6 +53,7 @@ export async function getHoroschope(date, time, zodiac) {
                 el.innerHTML =
                   planet.name + " was in " + zodiac + " :" + snapshot.val();
                 fortuneContainer.appendChild(el);
+                fortuneContainer.classList.remove("hidden");
               }
             })
             .catch((error) => {

@@ -5,6 +5,7 @@ import { getHoroschope } from "./database_script.js";
 let input_for_date = document.getElementById("birthday");
 let input_for_time = document.getElementById("time");
 const button = document.getElementById("submit_btn");
+const zodiacContainer = document.getElementById("horoscope-zodiac-container");
 
 function getBirthTime(time) {
   if (time !== "") {
@@ -31,9 +32,24 @@ function getBirthTime(time) {
   }
 }
 
+function displayZodiac(zodiac) {
+  const zodiacP = document.createElement("h2");
+  zodiacP.innerHTML = zodiac.toUpperCase();
+  zodiacContainer.appendChild(zodiacP);
+  var image = document.images[0];
+  var downloadingImage = new Image();
+  downloadingImage.onload = function () {
+    image.src = this.src;
+  };
+  let path = "images/" + zodiac + ".png";
+  downloadingImage.src = path;
+  zodiacContainer.classList.remove("hidden");
+}
+
 button.addEventListener("click", async (event) => {
   event.preventDefault();
   let zodiac = findZodiac(new Date(input_for_date.value));
   const birthTime = getBirthTime(input_for_time.value);
-  getHoroschope(input_for_date.value, birthTime, zodiac);
+  displayZodiac(zodiac);
+  getHoroschope(input_for_date.value, birthTime);
 });
