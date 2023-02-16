@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Horoscope App</title>
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
   <script defer type="module" src="socket_script.js"></script>
   <script type="module" src="horosope_chart.js"></script>
@@ -13,28 +14,44 @@
 </head>
  
 <body>
-  <canvas id="canvas" width="500" height="500" style="background-color:white">
+  <h1>Horoscope App</h1>
+  <section id="horoscope-wrapper">
+  <canvas id="canvas" width="600" height="600" style="background-color:white">
   </canvas>
-  <div id="horoscope-fortune-container"></div>
-  <div id="room-container">
+  <div class="style-wrapper">
+  <form action="/events" method="GET" class="birthday">
+    <label for="birthday">Enter your birthday:</label>
+    <input id="birthday" name="birthday" type="date" required>
+    <input id="time" name="time" type="time" required>
+    <button id="submit_btn" type="submit">Submit</button>
+  </form>
+  <form action="/room" method="POST" class="room">
+    <input name="room" type="text" required>
+    <button type="submit">New Room</button>
+  </form>
+  </div>
+  <section id="room-container">
     <% Object.keys(rooms).forEach(room=> { %>
       <div>
         <%= room %>
       </div>
       <a href="/<%= room %>">Join</a>
       <% }) %>
-  </div>
-  <form action="/room" method="POST">
-    <input name="room" type="text" required>
-    <button type="submit">New Room</button>
-  </form>
-
-  <form action="/events" method="GET">
-    <label for="birthday">Enter your birthday:</label>
-    <input id="birthday" name="birthday" type="date" required>
-    <input id="time" name="time" type="time" required>
-    <button id="submit_btn" type="submit">Submit</button>
-  </form>
+    </section>
+</section>
+  <section id="horoscope-fortune-container">
+    <p>TGYGUNMJK</p>
+    <p>ERTHBHBYNUJ</p>
+    <p>DRDRFTBNJ</p>
+    <p>ERTHBHBYNUJ</p>
+    <p>DRDRFTBNJ</p>
+    <p>ERTHBHBYNUJ</p>
+    <p>DRDRFTBNJ</p>
+    <p>ERTHBHBYNUJ</p>
+    <p>DRDRFTBNJ</p>
+    <p>vtgtgyyhuhuhjuj</p>
+    <p>hggygygygy</p>
+  </section>
 </body>
 
 </html>

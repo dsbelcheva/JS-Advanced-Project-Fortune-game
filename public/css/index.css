@@ -1,0 +1,202 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(#e6ccff, #9198e5);
+  color: #333;
+}
+
+h1 {
+  text-align:center;
+  font-size: 44px;
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+#horoscope-wrapper{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+canvas {
+  display: flex;
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px #ccc;
+  margin-right:150px;
+  margin-left:100px;
+}
+
+#style-wrapper {
+  display:flex;
+}
+
+#horoscope-fortune-container {
+  display: flex;
+  margin-top:50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color:#f2e5ff;
+  max-width: 50rem;
+  height: 780px;
+  width: 100%;
+ padding:0px;
+ border:5px solid white;
+ border-radius: 10px;
+  box-shadow: 5px 5px 10px #ccc;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin-left:400px;
+}
+
+#horoscope-fortune-container p {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 20px;
+  background-color:white;
+  border-radius: 10px;
+  padding:1rem;
+  margin: 4px;
+  border:2px solid  #f2f2f2;
+}
+
+.room {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.room input[type="text"] {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  margin-right: 20px;
+}
+
+.room input[type="text"]:focus {
+  outline: none;
+  border: 2px solid #555;
+}
+
+.room button[type="submit"] {
+  background-color: #333;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.birthday {
+ display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+    background-color:#f2e5ff;
+    max-width: 20rem;
+    height: 350px;
+    width: 100%;
+   padding:1rem;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px #ccc;
+}
+
+.birthday label {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.birthday input[type="date"],
+.birthday input[type="time"] {
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+.birthday input[type="date"]:focus,
+.birthday input[type="time"]:focus {
+  outline: none;
+  border: 2px solid #555;
+}
+
+.birthday button[type="submit"] {
+  background-color: #333;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.birthday button[type="submit"]:hover, 
+.room button[type="submit"]:hover {
+  background-color: #555;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f2e5ff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#room-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 150px;
+ margin-right:100px;
+ margin-top: -100px;
+  background-color:#f2e5ff;
+  max-width: 60rem;
+  height: 400px;
+  width: 100%;
+ border-radius: 8px;
+  box-shadow: 5px 5px 10px #ccc;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#room-container div {
+  font-size: 24px;
+  font-weight: bold;
+  margin:0px;
+}
+
+#room-container a {
+  background-color: #333;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+} 
+
+#room-container a:hover {
+  background-color: #555;
+}
+  
+  
