@@ -1,17 +1,15 @@
-import { getHoroscopeByPlanetAndZodiac, getPlanetsPositions } from "./database_script.js";
 import { Zodiac } from "./zodiac.js";
 import { Planet } from "./planets.js";
 
-export function drawChart() {
+export function drawChart(planetDegrees) {
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var radius = canvas.height / 2;
     ctx.translate(radius, radius);
     radius = radius * 0.90;
     draw(ctx,radius);
-    getHoroscopeByPlanetAndZodiac("Mars", "Pisces");
-    let degrees = [202, 251, 158, 225, 266, 305, 271, 287, 35, 215];
-    drawPlanets(ctx,radius, degrees);
+    console.log(planetDegrees);
+    drawPlanets(ctx,radius, planetDegrees);
 }
 
 function draw(ctx, radius) {
@@ -67,8 +65,6 @@ function drawElements(ctx, radius){
     }
 }
 
-// to add: draw planets to the horoscope
-
 function drawPlanets(ctx,radius,  degrees){
     ctx.font = radius * 0.10 + "px arial";
     ctx.textBaseline = "middle";
@@ -82,5 +78,3 @@ function drawPlanets(ctx,radius,  degrees){
         ctx.fill();
     }
 }
-
-drawChart();

@@ -81,3 +81,27 @@ export function findZodiac (birthday) {
     };
     return signs[month];
 };
+
+export function getZodiacByPlanetPosition(degrees) {
+    degrees = (degrees % 360 + 360) % 360;
+    const zodiacs = [
+      { name: "Aries", start: 0, end: 30 },
+      { name: "Taurus", start: 30, end: 60 },
+      { name: "Gemini", start: 60, end: 90 },
+      { name: "Cancer", start: 90, end: 120 },
+      { name: "Leo", start: 120, end: 150 },
+      { name: "Virgo", start: 150, end: 180 },
+      { name: "Libra", start: 180, end: 210 },
+      { name: "Scorpio", start: 210, end: 240 },
+      { name: "Sagittarius", start: 240, end: 270 },
+      { name: "Capricorn", start: 270, end: 300 },
+      { name: "Aquarius", start: 300, end: 330 },
+      { name: "Pisces", start: 330, end: 360 },
+    ];
+    for (let zodiac of zodiacs) {
+      if (degrees >= zodiac.start && degrees < zodiac.end) {
+        return zodiac.name;
+      }
+    }
+    return "Error: Invalid chart degree";
+  }
