@@ -1,5 +1,5 @@
 import { drawChart } from "./horosope_chart.js";
-import { getZodiacByPlanetPosition } from "./zodiac.js";
+import { getZodiacByPlanetPosition } from "./utils.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import {
   getDatabase,

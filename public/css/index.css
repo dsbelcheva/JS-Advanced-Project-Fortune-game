@@ -17,6 +17,7 @@ h1 {
   display:flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 canvas {
@@ -93,6 +94,7 @@ canvas {
 }
 
 .birthday {
+  margin: 10px;
  display:flex;
   flex-direction: column;
   align-items: center;

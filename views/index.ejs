@@ -18,26 +18,40 @@
   <section id="horoscope-wrapper">
   <canvas id="canvas" width="600" height="600" style="background-color:white">
   </canvas>
-  <div class="style-wrapper">
   <form action="/events" method="GET" class="birthday">
     <label for="birthday">Enter your birthday:</label>
     <input id="birthday" name="birthday" type="date" required>
     <input id="time" name="time" type="time" required>
     <button id="submit_btn" type="submit">Submit</button>
   </form>
-  <form action="/room" method="POST" class="room">
-    <input name="room" type="text" required>
-    <button type="submit">New Room</button>
+  <form class="birthday">
+    <label for="date-time">Enter Date/Time:</label>
+    <input type="datetime-local" id="date-time" name="date-time">
+    
+    <label for="latitude">Enter Latitude:</label>
+    <input type="number" step="any" id="latitude" name="latitude">
+    
+    <label for="longitude">Enter Longitude:</label>
+    <input type="number" step="any" id="longitude" name="longitude">
+    
+    <button type="submit">Submit</button>
   </form>
+  <!--
+  <div class="style-wrapper">
+    <form action="/room" method="POST" class="room">
+      <input name="room" type="text" required>
+      <button type="submit">New Room</button>
+    </form>
+    <section id="room-container">
+      <% Object.keys(rooms).forEach(room=> { %>
+        <div>
+          <%= room %>
+        </div>
+        <a href="/<%= room %>">Join</a>
+        <% }) %>
+      </section>
+      -->
   </div>
-  <section id="room-container">
-    <% Object.keys(rooms).forEach(room=> { %>
-      <div>
-        <%= room %>
-      </div>
-      <a href="/<%= room %>">Join</a>
-      <% }) %>
-    </section>
 </section>
 <section class="horoscope-container hidden" id="horoscope-zodiac-container">
   <img src="images/scorpio.png">
