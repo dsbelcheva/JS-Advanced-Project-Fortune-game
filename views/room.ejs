@@ -1,54 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chat App</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat App</title>
+    <script>
+      const roomName = "<%= roomName %>";
+    </script>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="socket_script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      #message-container {
+        width: 80%;
+        max-width: 1200px;
+      }
+      #message-container div {
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 20px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 4px;
+        border: 2px solid #f2f2f2;
+      }
+      #send-container {
+        position: fixed;
+        padding-bottom: 30px;
+        bottom: 0;
+        background-color: white;
+        max-width: 1200px;
+        width: 80%;
+        display: flex;
+      }
+      #message-input {
+        flex-grow: 1;
+      }
+      #send-container{
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message-container"></div>
+    <form id="send-container">
+      <input type="text" id="message-input" />
+      <button type="submit" id="send-button">Send message</button>
+      <button type="submit" id="send-horoscope-button">Get horoscope</button>
+    </form>
+  </body>
   <script>
-    const roomName = "<%= roomName %>"
+    const horoscopebutton = document.getElementById("send-horoscope-button");
+    const inputEl = document.getElementById("message-input");
+    horoscopebutton.addEventListener("click", (event) =>{
+      event.preventDefault();
+      inputEl.value = "My horoscope: \n" + sessionStorage.getItem("result");
+    }); 
   </script>
-  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-  <script defer src="socket_script.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-    #message-container {
-      width: 80%;
-      max-width: 1200px;
-    }
-    #message-container div {
-      background-color: #CCC;
-      padding: 5px;
-    }
-    #message-container div:nth-child(2n) {
-      background-color: #FFF;
-    }
-    #send-container {
-      position: fixed;
-      padding-bottom: 30px;
-      bottom: 0;
-      background-color: white;
-      max-width: 1200px;
-      width: 80%;
-      display: flex;
-    }
-    #message-input {
-      flex-grow: 1;
-    }
-  </style>
-</head>
-<body>
-  <div id="message-container"></div>
-  <form id="send-container">
-    <input type="text" id="message-input">
-    <button type="submit" id="send-button">Send message</button>
-    <button type="submit" id="send-horoscope-button">Send horoscope</button>
-  </form>
-</body>
 </html>

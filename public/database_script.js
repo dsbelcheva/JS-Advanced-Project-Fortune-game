@@ -38,6 +38,7 @@ const dbRef = ref(db);
 
 export async function getHoroschope(date, time) {
   let formattedDate = date.replaceAll("-", "");
+  let fullHoroscope = "";
   get(child(dbRef, "planet-positions/" + formattedDate + "/" + time))
     .then((snapshot) => {
       if (snapshot.exists()) {
@@ -50,11 +51,14 @@ export async function getHoroschope(date, time) {
             .then((snapshot) => {
               if (snapshot.exists()) {
                 let result = planet.name + " was in " + zodiac + " :" + snapshot.val();
-                sessionStorage.setItem("result", result);
+                if(sessionStorage.getItem("result") !== null){
+                  fullHoroscope = sessionStorage.getItem("result") + result + "\n";
+                }
                 const el = document.createElement("p");
                 el.innerHTML = result;
                 fortuneContainer.appendChild(el);
                 fortuneContainer.classList.remove("hidden");
+                sessionStorage.setItem("result", fullHoroscope);
               }
             })
             .catch((error) => {
