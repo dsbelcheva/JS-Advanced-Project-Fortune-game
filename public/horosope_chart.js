@@ -41,8 +41,8 @@ function drawZodiac(ctx, radius) {
     ctx.textAlign = "center";
     for (var j = 0; j < 12; j++) {
         let zodiac = new Zodiac(j+1)
-        var ax = (radius - 50) * Math.cos(Math.PI * 2 / 12 * j);
-        var ay = (radius - 50) * Math.sin(Math.PI * 2 / 12 * j);
+        var ax = (radius - 60) * Math.cos(Math.PI * 2 / 12 * j);
+        var ay = (radius - 60) * Math.sin(Math.PI * 2 / 12 * j);
         ctx.beginPath();
         ctx.fillText(zodiac.symbol, ax, ay);  
         ctx.fill();
@@ -71,8 +71,8 @@ function drawPlanets(ctx,radius,  degrees){
     ctx.textAlign = "center";
     for (var j = 0; j < 10; j++) {
         let planet = new Planet(j+1)
-        var ax = (radius - 80) * Math.cos(Math.PI * 2/360 * degrees[j]);
-        var ay = (radius - 80) * Math.sin(Math.PI * 2/ 360 * degrees[j]);
+        var ax = (radius - 90) * Math.cos(Math.PI * 2/360 * degrees[j]);
+        var ay = (radius - 90) * Math.sin(Math.PI * 2/ 360 * degrees[j]);
         ctx.beginPath();
         ctx.fillText(planet.symbol, ax, ay);  
         ctx.fill();

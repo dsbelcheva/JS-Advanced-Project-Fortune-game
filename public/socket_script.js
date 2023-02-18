@@ -1,21 +1,21 @@
 const socket = io('http://localhost:3000')
+const messageContainer = document.getElementById('message-container')
 const roomContainer = document.getElementById('room-container')
-const notificationContainer = document.getElementById('notification-container')
-const notificationInput = document.getElementById('notification-input') 
-const postForm = document.getElementById('post-container')
+const messageForm = document.getElementById('send-container')
+const messageInput = document.getElementById('message-input')
 
-if (postForm != null) {
-  const user_name = prompt('What is your name?')
-  appendMessage('You joined successfully')
-  socket.emit('new-user', roomName, user_name )
+if (messageForm != null) {
+  const name = prompt('What is your name?')
+  appendMessage('You joined')
+  socket.emit('new-user', roomName, name)
 
-  postForm.addEventListener('submit', eventt => {
-    eventt.preventDefault()
-    const message = notificationInput.value
-    appendMessage('You:' + message)
-    socket.emit('share-current-horoscope', roomName, message)
-    notificationInput.value=''
-  } )
+  messageForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const message = messageInput.value
+    appendMessage(`You: ${message}`)
+    socket.emit('send-chat-message', roomName, message)
+    messageInput.value = ''
+  })
 }
 
 socket.on('room-created', room => {
@@ -28,7 +28,7 @@ socket.on('room-created', room => {
   roomContainer.append(roomLink)
 })
 
-socket.on('user-horoscope', data => {
+socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`)
 })
 
@@ -40,8 +40,8 @@ socket.on('user-disconnected', name => {
   appendMessage(`${name} disconnected`)
 })
 
-function appendMessage (message) {
-  const messageEl = document.createElement('div')
-  messageEl.innerText = message
-  notificationContainer.append(messageEl)
+function appendMessage(message) {
+  const messageElement = document.createElement('div')
+  messageElement.innerText = message
+  messageContainer.append(messageElement)
 }

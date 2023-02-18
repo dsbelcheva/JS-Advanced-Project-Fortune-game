@@ -1,65 +1,67 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background: linear-gradient(#e6ccff, #9198e5);
   color: #333;
   height: 100%;
   min-height: 100vh;
 }
 
-h1 {
-  text-align:center;
-  font-size: 44px;
-  font-weight: bold;
-  margin-top: 50px;
-}
-
-#horoscope-wrapper{
-  display:flex;
+#horoscope-wrapper {
+  display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 100px;
 }
 
 canvas {
   display: flex;
   border-radius: 50%;
   box-shadow: 5px 5px 10px #ccc;
-  margin-right:150px;
-  margin-left:100px;
+  margin-right: 150px;
+  margin-left: 100px;
 }
 
 #style-wrapper {
-  display:flex;
+  display: flex;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.horoscope-container:hover {
+  z-index: 1;
 }
 
 .horoscope-container {
   display: flex;
-  margin-top:50px;
+  margin-top: 20px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color:#f2e5ff;
-  max-width: 50rem;
-  height: 60%;
-  width: 100%;
- padding:0px;
- border:5px solid white;
- border-radius: 10px;
+  background-color: #f2e5ff;
+  max-width: 80%;
+  max-height: 600px;
+  padding: 0px;
+  border: 5px solid white;
+  border-radius: 10px;
   box-shadow: 5px 5px 10px #ccc;
   overflow: hidden;
   overflow-y: scroll;
-  margin-left:30%;
 }
 
 #horoscope-fortune-container p {
   font-size: 14px;
   font-weight: bold;
   margin-right: 20px;
-  background-color:white;
+  background-color: white;
   border-radius: 10px;
-  padding:1rem;
+  padding: 1rem;
   margin: 4px;
-  border:2px solid  #f2f2f2;
+  border: 2px solid #f2f2f2;
 }
 
 .room {
@@ -93,63 +95,33 @@ canvas {
   cursor: pointer;
 }
 
-.birthday {
+.formElement {
   margin: 10px;
- display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-    background-color:#f2e5ff;
-    max-width: 20rem;
-    height: 350px;
-    width: 100%;
-   padding:1rem;
-    border-radius: 8px;
-    box-shadow: 5px 5px 10px #ccc;
+  background-color: #f2e5ff;
+  max-width: 20rem;
+  height: fit-content;
+  width: fit-content;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px #ccc;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.birthday label {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+.formElement label {
+  font-size: 20px;
+  font-weight: lighter;
+  margin-bottom: 5px;
+  margin-top: 10px;
   text-align: center;
 }
 
-.birthday input[type="date"],
-.birthday input[type="time"] {
-  font-size: 18px;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-}
-
-.birthday input[type="date"]:focus,
-.birthday input[type="time"]:focus {
-  outline: none;
-  border: 2px solid #555;
-}
-
-.birthday button[type="submit"] {
-  background-color: #333;
-  border: none;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-.birthday button[type="submit"]:hover, 
-.room button[type="submit"]:hover {
-  background-color: #555;
-}
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -167,44 +139,77 @@ canvas {
   background: #555;
 }
 
+
 #room-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 150px;
- margin-right:100px;
- margin-top: -100px;
-  background-color:#f2e5ff;
-  max-width: 60rem;
-  height: 400px;
-  width: 100%;
- border-radius: 8px;
-  box-shadow: 5px 5px 10px #ccc;
+  align-items: baseline;
+  margin-bottom: 20px;
+  max-height: 80%;
   overflow: hidden;
   overflow-y: scroll;
 }
 
-#room-container div {
-  font-size: 24px;
-  font-weight: bold;
-  margin:0px;
+#room-container>div {
+  padding: 10px;
+  background-color: #F7F7F7;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
-#room-container a {
-  background-color: #333;
-  border: none;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
+
+#room-container>a {
+  margin-left: 10px;
+  color: #68029f;
   text-decoration: none;
-} 
-
-#room-container a:hover {
-  background-color: #555;
 }
-  
-  
+
+form[action="/room"] {
+  display: flex;
+  align-items: center;
+}
+input {
+  padding: 10px;
+  font-size: 10px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #CCCCCC;
+  width: 150px;
+}
+
+form[action="/room"]>input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #CCCCCC;
+  width: 200px;
+}
+button[type="submit"] {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #a960d3;
+  color: white;
+  cursor: pointer;
+}
+
+.rooms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f2e5ff;
+  max-width: 40%;
+  max-height: 30%;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px #ccc;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#submit_btn{
+  margin-top: 10px;
+  border-radius: 12px;
+}

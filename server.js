@@ -23,6 +23,7 @@ app.post('/room', (req, res) => {
   // Send message that new room was created
   io.emit('room-created', req.body.room)
 })
+
 app.get('/:room', (req, res) => {
   if (rooms[req.params.room] == null) {
     return res.redirect('/')
@@ -36,14 +37,14 @@ io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
     socket.join(room)
     rooms[room].users[socket.id] = name
-    socket.to(room).broadcast.emit('user-connected', name)
+    socket.to(room).emit('user-connected', name)
   })
-  socket.on('share-current-horoscope', (room, message) => {
-    socket.to(room).broadcast.emit('user-horoscope', { message: message, name: rooms[room].users[socket.id] })
+  socket.on('send-chat-message', (room, message) => {
+    socket.to(room).emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
   })
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
-      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+      socket.to(room).emit('user-disconnected', rooms[room].users[socket.id])
       delete rooms[room].users[socket.id]
     })
   })

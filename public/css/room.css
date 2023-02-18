@@ -3,17 +3,16 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
-    background-color: aqua;
   }
-  #notification-container {
+  #message-container {
     width: 80%;
     max-width: 1200px;
   }
-  #notification-container div {
+  #message-container div {
     background-color: #CCC;
     padding: 5px;
   }
-  #notification-container div:nth-child(2n) {
+  #message-container div:nth-child(2n) {
     background-color: #FFF;
   }
   #post-container {

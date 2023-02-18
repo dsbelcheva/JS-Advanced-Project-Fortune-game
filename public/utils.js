@@ -78,7 +78,7 @@ export function displayZodiac(zodiac) {
   const zodiacP = document.createElement("h2");
   zodiacP.innerHTML = zodiac.toUpperCase();
   zodiacContainer.appendChild(zodiacP);
-  var image = document.images[0];
+  var image = document.images[2];
   var downloadingImage = new Image();
   downloadingImage.onload = function () {
     image.src = this.src;
