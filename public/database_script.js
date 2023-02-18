@@ -49,9 +49,10 @@ export async function getHoroschope(date, time) {
           get(child(dbRef, "planets-and-zodiacs/" + planet.name + "/" + zodiac))
             .then((snapshot) => {
               if (snapshot.exists()) {
+                let result = planet.name + " was in " + zodiac + " :" + snapshot.val();
+                sessionStorage.setItem("result", result);
                 const el = document.createElement("p");
-                el.innerHTML =
-                  planet.name + " was in " + zodiac + " :" + snapshot.val();
+                el.innerHTML = result;
                 fortuneContainer.appendChild(el);
                 fortuneContainer.classList.remove("hidden");
               }

@@ -1,3 +1,5 @@
+import { getAscendantSign } from "./ascendant.js";
+
 export function findZodiac(birthday) {
   const zodiacChangeDays = [21, 20, 21, 21, 22, 22, 23, 24, 24, 24, 23, 22];
   const signs = [
@@ -74,7 +76,7 @@ export function getBirthTime(time) {
 }
 
 export function displayZodiac(zodiac) {
-    const zodiacContainer = document.getElementById("horoscope-zodiac-container");
+  const zodiacContainer = document.getElementById("horoscope-zodiac-container");
   const zodiacP = document.createElement("h2");
   zodiacP.innerHTML = zodiac.toUpperCase();
   zodiacContainer.appendChild(zodiacP);
@@ -86,4 +88,27 @@ export function displayZodiac(zodiac) {
   let path = "images/" + zodiac + ".png";
   downloadingImage.src = path;
   zodiacContainer.classList.remove("hidden");
+}
+
+// latitude must be between 0 and 90
+function isValidLatitude(latitude) {
+  const latRegex = /^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/;
+  return latRegex.test(latitude);
+}
+
+// lomgitude must be between 0 and 180
+function isValidLongitude(longitude) {
+  const lonRegex = /^[-+]?((1[0-7]|[1-9])?\d(\.\d+)?|180(\.0+)?)$/;
+  return lonRegex.test(longitude);
+}
+
+export function displayAscendant(longitude, latitude, date) {
+  if (isValidLatitude(latitude) && isValidLongitude(longitude)) {
+    const zodiacContainer = document.getElementById(
+      "horoscope-zodiac-container"
+    );
+    const paragraphEl = document.createElement("h2");
+    paragraphEl.innerHTML = "Your ascendant is: " + getAscendantSign(date, latitude, longitude);
+    zodiacContainer.appendChild(paragraphEl);
+  }
 }
